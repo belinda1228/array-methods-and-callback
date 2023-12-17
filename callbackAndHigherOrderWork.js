@@ -129,6 +129,7 @@ const uniq = (arr, cb)=>{
 */
 
 // CODE HERE
+uniq(names, uniqArr=>console.log('The new names array with all the duplicate items removed is ${uniqArr}'))
 
 
 
@@ -140,6 +141,7 @@ const uniq = (arr, cb)=>{
 */
 
 // CODE HERE 
+const each = (arr, cb) => arr.forEach((el, i) => cb(el, i))
 
 
 /*
@@ -150,7 +152,7 @@ const uniq = (arr, cb)=>{
 */
 
 // CODE HERE
-
+each(names, (item, index) => `The item at index ${index} is ${item}.`)
 
 ////////// PROBLEM 7 //////////
 
@@ -183,15 +185,21 @@ var users = [
 // Do not edit the code above.
 
 // CODE HERE 
-
+const getUserById = (arr, id, cb) => {
+  for (let i = 0; i < arr.length; i++) {
+      if (arr[i].id === id) {
+          return cb(arr[i])
+      }
+  }
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-// })
+getUserById(users, '16t', user => {
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+})
 
 ////////// CHALLENGE //////////
 
@@ -210,6 +218,11 @@ var users = [
 */
 
 // CODE HERE
+const addingFactory = x => {
+  return function(y) {
+      return x + y
+  }
+}
 
 /*
   Now that you have addingFactory, you can create other
@@ -224,7 +237,7 @@ var users = [
 */
 
 // CODE HERE
-
+const addTen = addingFactory(10)
 /*
   Now the inner function is stored in the addTen variable! 
 
@@ -236,7 +249,8 @@ var users = [
 */
 
 // CODE HERE
-
+console.log(addTen(5))
+console.log(addTen(5789))
 /*
   Let's make another function from the addingFactory. 
 
@@ -249,3 +263,7 @@ var users = [
 */
 
 // CODE HERE
+const addFour = addingFactory(4)
+
+console.log(addFour(4))
+console.log(addFour(4444444))
